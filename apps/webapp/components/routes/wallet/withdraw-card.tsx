@@ -88,10 +88,10 @@ export function WithdrawCard() {
 const coins = [
   {
     coin: 'USDT',
-    nertwork: 'Arbitrum One'
+    network: 'Arbitrum One'
   },
   {
     coin: 'USDC',
-    nertwork: 'Arbitrum One'
+    network: 'Arbitrum One'
   }
 ]
