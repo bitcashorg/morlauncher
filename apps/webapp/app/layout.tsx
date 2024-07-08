@@ -11,7 +11,6 @@ import dynamic from 'next/dynamic'
 import { Open_Sans } from 'next/font/google'
 import React from 'react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { GoogleAnalytics as GoogleAnalyticsComponent } from '@/components/google-analytics'
 // import { Toaster } from 'react-hot-toast'
 
 const openSans = Open_Sans({
@@ -26,7 +25,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       className={cn('antialiased', openSans.className)}
       suppressHydrationWarning
     >
-      <GoogleAnalyticsComponent />
       <body>
         <GlobalStoreProvider>
           <Providers
