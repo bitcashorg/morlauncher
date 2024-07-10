@@ -41,7 +41,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           </Providers>
         </GlobalStoreProvider>
 
-        <GoogleAnalytics gaId="G-R5SY1L9FDV" />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ID || ""} />
         <SpeedInsights />
       </body>
     </html>
