@@ -6,15 +6,27 @@ if (!MULTIBASE_API_KEY) {
     throw new Error("Missing MULTIBASE_API_KEY")
 }
 
-export function initMultibase() {
-
-}
-export function useDepositAndPlaceOrder({ type, timeToClick = 10 }: { type: string, timeToClick?: number }) {
+export function useMultibase() {
     init(MULTIBASE_API_KEY)
 
-    identify({
-        address: "0xd8da6bf26964af9d7eed9e03e53415d37aa96045"
-    })
+    const identifyUser = (properties: any, address = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045') =>
+        identify({
+            address,
+            properties
+        })
 
-    track("Link Click", { type, timeToClick })
+    const trackInteraction = (label: string, properties: MultibaseTrackPropertiesProps) =>
+        track(label, properties)
+
+    return { trackInteraction, identifyUser }
+}
+
+// interface MultibaseIdentifyUserProps {
+//     plan: string,
+//     email: string
+// }
+
+interface MultibaseTrackPropertiesProps {
+    type: string,
+    timeToClick: number
 }
