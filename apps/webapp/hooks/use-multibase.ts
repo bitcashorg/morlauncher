@@ -1,15 +1,15 @@
 import { init, identify, track } from '@multibase/js'
 
-const NEXT_PUBLIC_MULTIBASE_API_KEY = process.env.NEXT_PUBLIC_MULTIBASE_API_KEY || ""
+const MULTIBASE_API_KEY = process.env.MULTIBASE_API_KEY || ""
 
-if (!NEXT_PUBLIC_MULTIBASE_API_KEY) {
-    throw new Error("Missing NEXT_PUBLIC_MULTIBASE_API_KEY")
+if (!MULTIBASE_API_KEY) {
+    throw new Error("Missing MULTIBASE_API_KEY")
 }
 
 export function useMultibase() {
-    init(NEXT_PUBLIC_MULTIBASE_API_KEY)
+    init(MULTIBASE_API_KEY)
 
-    const identifyUser = (properties: any, address = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045') =>
+    const identifyUser = (properties: Record<string, any>, address = '0xd8da6bf26964af9d7eed9e03e53415d37aa96045') =>
         identify({
             address,
             properties
@@ -21,12 +21,6 @@ export function useMultibase() {
     return { trackInteraction, identifyUser }
 }
 
-// interface MultibaseIdentifyUserProps {
-//     plan: string,
-//     email: string
-// }
-
 interface MultibaseTrackPropertiesProps {
-    type: string,
-    timeToClick: number
+    [key: string]: any;
 }
