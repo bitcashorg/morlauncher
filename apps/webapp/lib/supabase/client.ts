@@ -5,8 +5,8 @@ import { appConfig } from '../config'
 
 export function getSupabaseBrowserClient() {
   return createBrowserClient<Database>(
-    appConfig.supabase.url,
-    appConfig.supabase.anonKey
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   )
 }
 
