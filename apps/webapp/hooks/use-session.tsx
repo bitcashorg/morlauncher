@@ -10,7 +10,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { ReactNode, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useAsync, useLocalStorage, useToggle } from 'react-use'
-
 // Exports
 export { SessionProvider, useSession }
 
@@ -50,6 +49,7 @@ function useSessionFn() {
           // set new session if ids match
           if (session || payload.new.id !== newSessionId) return
           console.log(' ✅ supabase session id matches', payload.new)
+
           setSession(payload.new as Tables<'session'>)
           toggleShowSessionDialog(false)
         }

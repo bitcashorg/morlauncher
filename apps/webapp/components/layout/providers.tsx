@@ -13,6 +13,8 @@ import {
   trustWallet,
   walletConnectWallet
 } from '@rainbow-me/rainbowkit/wallets'
+import { appConfig } from '@/lib/config'
+import multibase, { MultibaseProvider } from '@multibase/js'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { ThemeProviderProps } from 'next-themes/dist/types'
@@ -52,6 +54,17 @@ const customRainbowKitTheme = merge(lightTheme(), {
   // }
 } as Theme)
 
+if (typeof window !== 'undefined') {
+  const multibaseKey = appConfig.multibase.key
+
+  if (!multibaseKey) {
+    console.error('Missing MULTIBASE_API_KEY')
+  } else {
+    multibase.init(multibaseKey)
+    console.info('Multibase Initialized')
+  }
+}
+
 export function Providers({ children, ...props }: ThemeProviderProps) {
   return (
     <NextThemesProvider {...props}>
@@ -66,11 +79,13 @@ export function Providers({ children, ...props }: ThemeProviderProps) {
                 appName: 'Bitlauncher'
               }}
             >
-              <SessionProvider>
-                <UseSigningRequestProvider>
-                  {children}
-                </UseSigningRequestProvider>
-              </SessionProvider>
+              <MultibaseProvider client={multibase}>
+                <SessionProvider>
+                  <UseSigningRequestProvider>
+                    {children}
+                  </UseSigningRequestProvider>
+                </SessionProvider>
+              </MultibaseProvider>
             </RainbowKitProvider>
           </WagmiProvider>
         </QueryClientProvider>

@@ -17,7 +17,7 @@
   "dependencies": {
     "@blockmatic/hooks-utils": "^3.0.0",
     "@hookform/resolvers": "^3.3.4",
-    "@multibase/js": "^0.1.15",
+    "@multibase/js": "latest",
     "@next/bundle-analyzer": "^14.2.3",
     "@next/third-parties": "latest",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -32,7 +32,7 @@
     "@tanstack/react-query": "^5.34.2",
     "@vercel/analytics": "^1.2.2",
     "@vercel/og": "^0.6.2",
-    "@wagmi/connectors": "^4.3.3",
+    "@wagmi/connectors": "5.0.26",
     "@wharfkit/antelope": "^1.0.7",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
@@ -62,7 +62,7 @@
     "smartsale-lib": "workspace:*",
     "vconsole": "^3.15.1",
     "viem": "latest",
-    "wagmi": "latest",
+    "wagmi": "2.9.3",
     "zod": "^3.23.6"
   },
   "devDependencies": {
